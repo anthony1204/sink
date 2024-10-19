@@ -13,7 +13,7 @@ export function useAPI(api: string, options?: object): Promise<unknown> {
       toast("Sir, that is the WRONG PASSWORD GET OUT OF MY SITE!!!")
     }else{
       if (error?.data?.statusMessage) {
-        if (!error?.data?.statusMessage==='[GET] "/api/verify": 401'){
+        if (!error?.data?.statusMessage==="Login failed, please try again."){
           toast(error?.data?.statusMessage)
         }
       }
