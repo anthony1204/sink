@@ -10,11 +10,16 @@ export function useAPI(api: string, options?: object): Promise<unknown> {
     if (error?.status === 401) {
       localStorage.removeItem('SinkSiteToken')
       navigateTo('/dashboard/login')
-    }
-    if (error?.data?.statusMessage) {
-      //error?.data?.statusMessage
       toast("Sir, that is the WRONG PASSWORD GET OUT OF MY SITE!!!")
+    }else{
+      if (error?.data?.statusMessage) {
+        toast(error?.data?.statusMessage)
+      }
     }
+    // if (error?.data?.statusMessage) {
+    //   //error?.data?.statusMessage
+    //   toast("Sir, that is the WRONG PASSWORD GET OUT OF MY SITE!!!")
+    // }
     return Promise.reject(error)
   })
 }
